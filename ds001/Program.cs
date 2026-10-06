@@ -11,7 +11,8 @@ string caminho = Path.Combine(
 );
 
 string json = File.ReadAllText(caminho);
-ListaVendas listaVendas = JsonSerializer.Deserialize<ListaVendas>(json);
+ListaVendas listaVendas = JsonSerializer.Deserialize<ListaVendas>(json) 
+    ?? throw new Exception("Falha ao consultar vendas.");
 
 foreach (var venda in listaVendas.vendas)
 {
